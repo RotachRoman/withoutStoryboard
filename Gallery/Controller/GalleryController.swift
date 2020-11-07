@@ -63,20 +63,53 @@ class GalleryController: UIViewController {
   // MARK: - Setting Views
   private func setupViews() {
     view.addSubviews(cardView1)
+    view.addSubview(cardView2)
+    view.addSubview(cardView3)
+    view.addSubview(cardView4)
   }
   
   // MARK: - Setting Constraints
   private func setupConstraints() {
     
+    let margins = view.safeAreaLayoutGuide
+    
     NSLayoutConstraint.activate([
-      cardView1.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      cardView1.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-      
-      cardView1.widthAnchor.constraint(equalToConstant: 300),
-      cardView1.heightAnchor.constraint(equalToConstant: 300)
+      cardView1.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
+      cardView1.topAnchor.constraint(equalTo: margins.topAnchor),
+      cardView1.widthAnchor.constraint(equalTo: margins.widthAnchor, multiplier: 0.5),
+      cardView1.heightAnchor.constraint(equalTo: margins.heightAnchor, multiplier: 0.5)
       
     ])
-    
-    
+//
+    NSLayoutConstraint.activate([
+      cardView2.leadingAnchor.constraint(equalTo: cardView1.trailingAnchor),
+      cardView2.topAnchor.constraint(equalTo: margins.topAnchor),
+//      cardView2.widthAnchor.constraint(equalToConstant: view.frame.width/2),
+      cardView2.widthAnchor.constraint(equalTo: margins.widthAnchor, multiplier: 0.5),
+        cardView2.heightAnchor.constraint(equalTo: margins.heightAnchor,
+                                          multiplier: 0.5),
+    ])
+        
+    //card 3
+    NSLayoutConstraint.activate([
+      cardView3.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
+      cardView3.topAnchor.constraint(equalTo: cardView1.bottomAnchor),
+      cardView3.widthAnchor.constraint(equalTo: margins.widthAnchor,
+                                       multiplier: 0.5),
+      cardView3.heightAnchor.constraint(equalTo: margins.heightAnchor,
+                                        multiplier: 0.5),
+      cardView3.bottomAnchor.constraint(equalTo: margins.bottomAnchor)
+    ])
+
+    //card 4
+    NSLayoutConstraint.activate([
+      cardView4.leadingAnchor.constraint(equalTo: cardView3.trailingAnchor),
+      cardView4.topAnchor.constraint(equalTo: cardView2.bottomAnchor),
+      cardView4.widthAnchor.constraint(equalTo: margins.widthAnchor,
+                                       multiplier: 0.5),
+      cardView4.heightAnchor.constraint(equalTo: margins.heightAnchor,
+                                        multiplier: 0.5),
+      cardView4.bottomAnchor.constraint(equalTo: margins.bottomAnchor)
+    ])
   }
 }
